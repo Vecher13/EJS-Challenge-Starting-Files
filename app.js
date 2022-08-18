@@ -1,6 +1,6 @@
 //jshint esversion:6
-let log = console.log;
 const express = require("express");
+const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
@@ -16,8 +16,10 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
+app.use(expressLayouts);
 
-
+// Set default layout for pages
+app.set('layout', 'layout');
 
 app.get("/", (req, res) => {
   res.render("home", { homeContent: homeStartingContent, postList : posts});
