@@ -1,6 +1,6 @@
 //jshint esversion:6
 const express = require("express");
-var expressLayouts = require('express-ejs-layouts');
+const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
