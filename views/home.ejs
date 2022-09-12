@@ -6,14 +6,14 @@
 
 <% postList.forEach((post)=> { %>
     <article class="post-card">
-        <a href="/posts/<%= post.title %>">
+        <a href="/posts/<%= post._id %>">
             <h2>
-                <%= post.title %>
+                <%= post.postTitle %>
             </h2>
         </a>
         <p>
-            <%= post.body.substr(0, 100) %>
-                <% if (post.body.length> 100){%> <a href="/posts/<%= post.title %>">... Read More</a>
+            <%= post.postBody.substr(0, 100) %>
+                <% if (post.postBody.length> 100){%> <a href="/posts/<%= post._id %>">... Read More</a>
                     <% } %>
         </p>
     </article>

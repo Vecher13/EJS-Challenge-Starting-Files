@@ -6,6 +6,8 @@ const ejs = require("ejs");
 const _ = require("lodash");
 const https = require("https");
 var fs = require("fs");
+const mongeese = require("mongoose");
+const { constants } = require("fs/promises");
 
 const homeStartingContent = "Привет! Меня зовут Ашраф. Я живу мечтой стать разработчиком. Хочу в ближайшем будущем работать WEB разработчиком и прикладываю на это свои силы. Этот вэб-блог показывает мое стремление им стать! Здесь будут представлены мои работы и проекты, которыми я могу гордиться!";
 const aboutContent = "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
@@ -24,8 +26,32 @@ app.use(expressLayouts);
 // Set default layout for pages
 app.set('layout', 'layout');
 
+// connect to DB
+mongeese.connect("mongodb://localhost:27017/blogDB");
+
+// DB's Scema
+
+const postScema = new mongeese.Schema({
+  postTitle: String,
+  postBody: String
+})
+
+const Post = mongeese.model("Post", postScema);
+
+
 app.get("/", (req, res) => {
-  res.render("home", { homeContent: homeStartingContent, postList : posts});
+
+  Post.find({}, (err, foundPosts) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("home", {
+        homeContent: homeStartingContent,
+        postList: foundPosts,
+      });
+    };
+
+  })
   
 })
 
@@ -46,24 +72,29 @@ app.get("/compose", (req, res) => {
 app.post("/compose", (req, res) => {
   const postTitle = req.body.postTitle;
   const postBody = req.body.postBody;
-  const post = {
-    title: postTitle,
-    body: postBody
-  };
-  posts.push(post);
+
+  const newPost = new Post({
+    postTitle: postTitle,
+    postBody: postBody
+  })
+  newPost.save();
   
   res.redirect("/");
 })
 
 app.get("/posts/:postName", (req, res) => {
-  const requestedTitle = _.lowerCase(req.params.postName);
-  posts.forEach((post) =>{
-    const postTitle = _.lowerCase(post.title)
+  const requestedId = req.params.postName;
 
-    if (requestedTitle === postTitle) {
-      res.render("post", {postTitle : post.title, postBody : post.body})
+  Post.findById(requestedId, (err, foundPost) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("post", {
+        postTitle: foundPost.postTitle,
+        postBody: foundPost.postBody,
+      });
     }
-  })
+  });
 
 })
 
