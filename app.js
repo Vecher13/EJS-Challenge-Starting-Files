@@ -27,7 +27,9 @@ app.use(expressLayouts);
 app.set('layout', 'layout');
 
 // connect to DB
-mongeese.connect("mongodb://AzureDiamond:hunter2@0.0.0.0:27017/blogDB");
+mongeese.connect(
+  "mongodb://Vecher13:J%40p%40n444955584@0.0.0.0:27017/?authMechanism=DEFAULT/blogDB"
+);
 
 // DB's Scema
 
