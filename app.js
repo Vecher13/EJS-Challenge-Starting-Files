@@ -31,6 +31,8 @@ mongeese.connect(
   "mongodb://Vecher13:J@p@n444955584@0.0.0.0:27017"
 );
 
+mongeese.connect("mongodb://0.0.0.0:27017/blogDB");
+
 // DB's Scema
 
 const postScema = new mongeese.Schema({
