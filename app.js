@@ -27,11 +27,10 @@ app.use(expressLayouts);
 app.set('layout', 'layout');
 
 // connect to DB
-mongeese.connect(
-  "mongodb://Vecher13:J@p@n444955584@0.0.0.0:27017"
-);
+mongeese.connect("mongodb://Vecher13:J@p@n444955584@0.0.0.0:27017", {
+  dbName: "blogDB",
+});
 
-mongeese.connect("mongodb://0.0.0.0:27017/blogDB");
 
 // DB's Scema
 
