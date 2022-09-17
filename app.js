@@ -28,7 +28,7 @@ app.set('layout', 'layout');
 
 // connect to DB
 mongeese.connect(
-  "mongodb://Vecher13:J%40p%40n444955584@0.0.0.0:27017/?authMechanism=DEFAULT/blogDB"
+  "mongodb://Vecher13:J@p@n444955584@0.0.0.0:27017/?authMechanism=DEFAULT"
 );
 
 // DB's Scema
