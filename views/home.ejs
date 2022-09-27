@@ -1,0 +1,20 @@
+<h1>Home sweet home</h1>
+
+<p>
+    <%= homeContent %>
+</p>
+
+<% postList.forEach((post)=> { %>
+    <article class="post-card">
+        <a href="/posts/<%= post._id %>">
+            <h2>
+                <%= post.postTitle %>
+            </h2>
+        </a>
+        <p>
+            <%= post.postBody.substr(0, 100) %>
+                <% if (post.postBody.length> 100){%> <a href="/posts/<%= post._id %>">... Read More</a>
+                    <% } %>
+        </p>
+    </article>
+    <%}) %>
