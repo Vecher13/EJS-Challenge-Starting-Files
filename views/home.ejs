@@ -1,13 +1,19 @@
-<h1>Home sweet home</h1>
 
-<p>
-    <%= homeContent %>
-</p>
 
+<div class="simple-card">
+    <h1>Home sweet home</h1>
+    <p>
+
+        <%= homeContent %>
+    </p>
+</div>
+    
+
+<div class="post-list">
 <% postList.forEach((post)=> { %>
     <article class="post-card">
         <a href="/posts/<%= post._id %>">
-            <h2>
+            <h2 class="title-card">
                 <%= post.postTitle %>
             </h2>
         </a>
@@ -18,3 +24,4 @@
         </p>
     </article>
     <%}) %>
+    </div>
