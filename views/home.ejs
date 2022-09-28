@@ -12,16 +12,18 @@
 <div class="post-list">
 <% postList.forEach((post)=> { %>
     <article class="post-card">
+        <img class="post-image" src="<%= post.image %>">
         <a href="/posts/<%= post._id %>">
             <h2 class="title-card">
                 <%= post.postTitle %>
             </h2>
         </a>
         <p>
-            <%= post.postBody.substr(0, 100) %>
-                <% if (post.postBody.length> 100){%> <a href="/posts/<%= post._id %>">... Read More</a>
+            <%= post.postBody.substr(0, 150) %>
+                <% if (post.postBody.length> 150){%>... </p>
+                    <a class="read-more" href="/posts/<%= post._id %>">Read More</a>
                     <% } %>
-        </p>
+        
     </article>
     <%}) %>
     </div>
