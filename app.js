@@ -34,7 +34,8 @@ mongeese.connect(process.env.DB_CONN, {
 
 const postScema = new mongeese.Schema({
   postTitle: String,
-  postBody: String
+  postBody: String,
+  image: String
 })
 
 const Post = mongeese.model("Post", postScema);
