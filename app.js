@@ -94,6 +94,7 @@ app.get("/posts/:postName", (req, res) => {
       res.render("post", {
         postTitle: foundPost.postTitle,
         postBody: foundPost.postBody,
+        image: foundPost.image
       });
     }
   });
