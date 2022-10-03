@@ -103,7 +103,7 @@ app.get("/posts/:postName", (req, res) => {
 
 let PORT = process.env.PORT
 if (PORT == null || PORT == "") {
-  PORT = 80;
+  PORT = 3000;
 }
 
 app.listen(PORT, function () {
