@@ -74,10 +74,12 @@ app.get("/compose", (req, res) => {
 app.post("/compose", (req, res) => {
   const postTitle = req.body.postTitle;
   const postBody = req.body.postBody;
+  const img = req.body.img;
 
   const newPost = new Post({
     postTitle: postTitle,
-    postBody: postBody
+    postBody: postBody,
+    image: img
   })
   newPost.save();
   
