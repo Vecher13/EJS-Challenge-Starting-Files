@@ -88,6 +88,7 @@ li a:hover {
 max-width: 1130px;
 margin: 0 auto;
 padding: 0 2rem;
+padding-bottom: 2rem;
 }
 
 .post-card {
@@ -179,4 +180,14 @@ padding: 0 2rem;
   width: 100%;
   text-align: center;
   margin-top: 2rem;
+}
+
+.form-group {
+  display: grid;
+  gap: 10px;
+}
+
+.wrapper-input textarea {
+  min-height: 300px;
+  min-width: 350px;
 }

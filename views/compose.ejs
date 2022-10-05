@@ -1,16 +1,23 @@
+<div class="simple-card">
+    <h1>Compose</h1>
+<div class="wrapper-input">
 
-<h1>Compose</h1>
+    <form action="/compose" method="post">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="postTitle">
+            <label>Post text</label>
+            <textarea class="form-control" name="postBody" rows="5" cols="30"></textarea>
+            <label>Image URL</label>
+            <input type="text" name="img">
+       
+            <button type="submit" class="">Post</button>
 
-<form action="/compose" method="post">
-    <div class="form-group">
-        <label>Title</label>
-        <input type="text" class="form-control" name="postTitle">
-        <label>Post text</label>
-  <textarea class="form-control" name="postBody" rows="5" cols="30"></textarea>
     </div>
-
-<div>
-    <button type="submit" class="btn btn-primary">Post</button>
+    
+    
+    </form>
+    
 </div>
 
-</form>
+</div>
