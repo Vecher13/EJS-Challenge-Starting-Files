@@ -75,15 +75,18 @@ app.post("/compose", (req, res) => {
   const postTitle = req.body.postTitle;
   const postBody = req.body.postBody;
   const img = req.body.img;
+  const text = req.body.summernote;
+  var html = $('#summernote').summernote('code');
+ // const text2 = $('#summernote').summernote('code');
 
   const newPost = new Post({
     postTitle: postTitle,
     postBody: postBody,
     image: img
   })
-  newPost.save();
-  
-  res.redirect("/");
+  //newPost.save();
+  console.log("Here is the text!!@!!", html);
+  //res.redirect("/");
 })
 
 app.get("/posts/:postName", (req, res) => {
