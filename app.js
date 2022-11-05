@@ -82,15 +82,11 @@ app.post("/compose", (req, res) => {
 
   const newPost = new Post({
     postTitle: postTitle,
-    postBody: postBody,
+    postBody: html,
     image: img
   })
-  //newPost.save();
-  console.log("Here is the text!!@!!", html);
-  console.log(postTitle);
-  console.log(req.body.superTitle);
-  
-  //res.redirect("/");
+  newPost.save();
+  res.redirect("/");
 })
 
 app.get("/posts/:postName", (req, res) => {

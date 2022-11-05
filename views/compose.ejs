@@ -24,9 +24,7 @@
             
     </div>
     
-    <div id="hiddenHtml" style="visibility: hidden;" name="htmlText">
-      hlkjh
-    </div>
+    <input id="hiddenHtml" type="text" style="display: none;" name="htmlText"> </input>
     </form>
     
 </div>
@@ -36,9 +34,7 @@
 
 <script>add.onclick = function() {
   var markupStr = $('#summernote').summernote('code');
-  document.getElementById("hiddenHtml").innerHTML = markupStr
-
-
+  document.getElementById("hiddenHtml").value = markupStr
 };</script>
 
 
