@@ -108,7 +108,7 @@ app.get("/posts/:postName", (req, res) => {
 
 let PORT = process.env.PORT
 if (PORT == null || PORT == "") {
-  PORT = 3000;
+  PORT = 80;
 }
 
 app.listen(PORT, function () {
