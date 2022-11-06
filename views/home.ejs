@@ -18,12 +18,14 @@
                 <%= post.postTitle %>
             </h2>
         </a>
-        <p>
-            <%= post.postBody.substr(0, 150) %>
-                <% if (post.postBody.length> 150){%>... </p>
+        <div class="postBody">
+            <%- post.postBody.substr(0, 150) _%>
+                <% if (post.postBody.length> 150){%>... </div>
                     <a class="read-more" href="/posts/<%= post._id %>">Read More</a>
                     <% } %>
         
     </article>
     <%}) %>
     </div>
+
+    <script src="postBody.js"></script>
