@@ -9,6 +9,8 @@ const https = require("https");
 const fs = require("fs");
 const mongeese = require("mongoose");
 const { constants } = require("fs/promises");
+const res = require("express/lib/response");
+const { redirect } = require("express/lib/response");
 
 const homeStartingContent = "Привет! Меня зовут Ашраф. Я живу мечтой стать разработчиком. Хочу в ближайшем будущем работать WEB разработчиком и прикладываю на это свои силы. Этот вэб-блог показывает мое стремление им стать! Здесь будут представлены мои работы и проекты, которыми я могу гордиться!";
 const aboutContent = "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
@@ -49,9 +51,10 @@ app.get("/", (req, res) => {
     if (err) {
       console.log(err);
     } else {
+      let posts = foundPosts.reverse() 
       res.render("home", {
         homeContent: homeStartingContent,
-        postList: foundPosts,
+        postList: posts,
       });
     };
 
@@ -69,9 +72,21 @@ app.get("/contact", (req, res) => {
 
 app.get("/compose", (req, res) => {
   
-  res.render("compose");
+  res.render("auth");
 
 })
+
+app.post("/auth", (req, res) =>{
+const user = req.body.userName;
+const pass = req.body.password;
+
+if (user === process.env.AUTHOR_LOG && pass === process.env.AUTHOR_PASS) {
+  res.render("compose")
+} else {
+  redirect("/compose")
+}
+
+});
 
 app.post("/compose", (req, res) => {
   const postTitle = req.body.postTitle;
